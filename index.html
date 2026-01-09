@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>HAI SEMUA</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 6rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            animation: glow 2s infinite alternate,
+                       float 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow:
+                    0 0 10px #fff,
+                    0 0 20px #00eaff,
+                    0 0 40px #00eaff;
+            }
+            to {
+                text-shadow:
+                    0 0 20px #fff,
+                    0 0 40px #00eaff,
+                    0 0 80px #00eaff;
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            animation: rise linear infinite;
+        }
+
+        @keyframes rise {
+            to {
+                transform: translateY(-120vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HAI SEMUA</h1>
+
+    <script>
+        for (let i = 0; i < 30; i++) {
+            const bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+
+            const size = Math.random() * 60 + 20;
+            bubble.style.width = size + "px";
+            bubble.style.height = size + "px";
+            bubble.style.left = Math.random() * 100 + "vw";
+            bubble.style.animationDuration = Math.random() * 5 + 5 + "s";
+
+            document.body.appendChild(bubble);
+        }
+    </script>
+
+</body>
+</html>
