@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>HAI AGUS DAN JOHN</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    background:linear-gradient(270deg,#0f0c29,#302b63,#24243e);
+    background-size:600% 600%;
+    animation:bgMove 8s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+h1{
+    font-size:4.5rem;
+    color:#fff;
+    text-align:center;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    animation:
+        glow 0.8s infinite alternate,
+        float 2s ease-in-out infinite,
+        shake 0.15s infinite;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:
+        0 0 10px #fff,
+        0 0 20px #00f2ff,
+        0 0 40px #00f2ff,
+        0 0 80px #00f2ff;
+    }
+    to{
+        text-shadow:
+        0 0 20px #fff,
+        0 0 40px #ff00ff,
+        0 0 80px #ff00ff,
+        0 0 160px #ff00ff;
+    }
+}
+
+@keyframes float{
+    0%{transform:translateY(0) scale(1)}
+    50%{transform:translateY(-30px) scale(1.05)}
+    100%{transform:translateY(0) scale(1)}
+}
+
+@keyframes shake{
+    0%{transform:translate(0,0)}
+    25%{transform:translate(2px,-2px)}
+    50%{transform:translate(-2px,2px)}
+    75%{transform:translate(2px,2px)}
+    100%{transform:translate(0,0)}
+}
+
+.rain{
+    position:absolute;
+    width:2px;
+    height:40px;
+    background:linear-gradient(transparent,#00ffe7);
+    animation:rainFall linear infinite;
+}
+
+@keyframes rainFall{
+    from{
+        transform:translateY(-100px);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+
+.click{
+    position:fixed;
+    bottom:20px;
+    color:#fff;
+    opacity:0.6;
+    font-size:14px;
+    letter-spacing:2px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>HAI AGUS DAN JOHN</h1>
+<div class="click">CLICK TO ACTIVATE SOUND</div>
+
+<audio id="sound" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_6f1c7c70fd.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Hujan neon brutal
+for(let i=0;i<120;i++){
+    const rain=document.createElement("div");
+    rain.className="rain";
+    rain.style.left=Math.random()*100+"vw";
+    rain.style.animationDuration=(Math.random()*1.5+0.5)+"s";
+    rain.style.opacity=Math.random();
+    document.body.appendChild(rain);
+}
+
+// Aktifkan suara saat klik
+document.body.addEventListener("click",()=>{
+    const sound=document.getElementById("sound");
+    sound.volume=0.6;
+    sound.play();
+    document.querySelector(".click").style.display="none";
+});
+</script>
+
+</body>
+</html>
